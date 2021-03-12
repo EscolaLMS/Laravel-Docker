@@ -1,4 +1,4 @@
-FROM devilbox/php-fpm:7.4-base
+FROM devilbox/php-fpm:7.3-base
 
 RUN apt-get update && \
     apt-get install libonig-dev libzip-dev libxml2-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev cron zip vim libcurl4-openssl-dev pkg-config libssl-dev libpng-dev libpq-dev postgresql -y \
