@@ -1,4 +1,4 @@
-FROM devilbox/php-fpm:8.0-prod
+FROM devilbox/php-fpm:8.0-work
 
 RUN apt-get update && \
     apt-get install libonig-dev libzip-dev libxml2-dev libfreetype6-dev libjpeg62-turbo-dev libmcrypt-dev cron zip vim libcurl4-openssl-dev pkg-config libssl-dev libpng-dev libpq-dev postgresql ffmpeg -y \
@@ -20,15 +20,15 @@ RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.
     && mv composer.phar /usr/bin/composer
 RUN chmod +x /usr/bin/composer
 
-# this i s production image
+# this i s development image
 
 # phpunit
-# RUN composer global require "phpunit/phpunit"
-# ENV PATH /root/.composer/vendor/bin:$PATH
-# RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
+RUN composer global require "phpunit/phpunit"
+ENV PATH /root/.composer/vendor/bin:$PATH
+RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
 # xdebug
-# RUN pecl install xdebug && docker-php-ext-enable xdebug
+RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # node & pupperteer
 
