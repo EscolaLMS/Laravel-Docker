@@ -9,6 +9,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       -
+        name: What
+        run: echo "BRANCH=${GITHUB_REF##*/}" >> $GITHUB_ENV
+                
+      -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
       -
@@ -25,4 +29,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: escolalms/php:${{env.GITHUB_REF_NAME}}
+          tags: escolalms/php:${{env.BRANCH}}
