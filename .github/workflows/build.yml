@@ -25,4 +25,4 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: escolalms/php:8-prod
+          tags: escolalms/php:${{GITHUB_REF_NAME}}
