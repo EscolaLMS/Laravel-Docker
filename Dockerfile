@@ -3,11 +3,11 @@ FROM devilbox/php-fpm:8.0-prod
 RUN apt-get update && apt-get install libonig-dev postgresql ffmpeg -y 
 
 # composer
-# RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.phar \
-#    && mv composer.phar /usr/bin/composer
-# RUN chmod +x /usr/bin/composer
+RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.phar \
+    && mv composer.phar /usr/bin/composer
+RUN chmod +x /usr/bin/composer
 
-# this i s production image
+# this is production image
 
 # phpunit
 # RUN composer global require "phpunit/phpunit"
@@ -28,6 +28,9 @@ RUN apt-get update -qq && apt-get install -y build-essential nodejs && npm insta
 
 RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
     && npm install -g svgo@1.3.2
+
+#mjml binary 
+RUN npm install -g mjml
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
