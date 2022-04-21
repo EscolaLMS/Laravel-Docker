@@ -26,11 +26,10 @@ RUN apt-get update -qq && apt-get install -y build-essential nodejs \
 RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
   --no-install-recommends && \
   apt-get autoremove -y && \
-  rm -rf /var/lib/apt/lists/* \
-    && npm install -g svgo@1.3.2
+  rm -rf /var/lib/apt/lists/* 
 
-# mjml binary 
-RUN npm install -g mjml
+# img svg optmizer & mjml 
+RUN npm install -g svgo@1.3.2 mjml
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
