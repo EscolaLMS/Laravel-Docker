@@ -23,10 +23,7 @@ RUN apt-get update -qq && apt-get install -y build-essential nodejs \
   rm -rf /var/lib/apt/lists/*
 
 # image optimizers
-RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
-  --no-install-recommends && \
-  apt-get autoremove -y && \
-  rm -rf /var/lib/apt/lists/* 
+RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y 
 
 # img svg optmizer & mjml 
 RUN npm install -g svgo@1.3.2 mjml
