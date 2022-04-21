@@ -20,15 +20,12 @@ RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.
     && mv composer.phar /usr/bin/composer
 RUN chmod +x /usr/bin/composer
 
-# this i s development image
 
 # phpunit
 RUN composer global require "phpunit/phpunit"
 ENV PATH /root/.composer/vendor/bin:$PATH
 RUN ln -s /root/.composer/vendor/bin/phpunit /usr/bin/phpunit
 
-# xdebug
-RUN pecl install xdebug && docker-php-ext-enable xdebug
 
 # node & pupperteer
 
@@ -42,6 +39,9 @@ RUN chmod -R o+rx /usr/lib/node_modules/puppeteer/.local-chromium
 
 RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
     & npm install -g svgo@1.3.2
+    
+# mjml binary 
+RUN npm install -g mjml
 
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
