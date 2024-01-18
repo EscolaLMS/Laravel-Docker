@@ -1,5 +1,79 @@
 FROM devilbox/php-fpm:8.2-base
 
+RUN set -eux \
+    && DEBIAN_FRONTEND=noninteractive apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends --no-install-suggests \
+    alien \
+    firebird-dev \
+    freetds-dev \
+    ghostscript \
+    libaio-dev \
+    libavif-dev \
+    libbz2-dev \
+    libc-client-dev \
+    libcurl4-openssl-dev \
+    libenchant-2-dev \
+    libevent-dev \
+    libfbclient2 \
+    libfreetype6-dev \
+    libgmp-dev \
+    libib-util \
+    libicu-dev \
+    libjpeg-dev \
+    libkrb5-dev \
+    libldap2-dev \
+    liblz4-dev \
+    liblzf-dev \
+    libmagickwand-dev \
+    libmariadb-dev \
+    libmemcached-dev \
+    libpcre3-dev \
+    libpng-dev \
+    libpq-dev \
+    libpspell-dev \
+    librabbitmq-dev \
+    librdkafka-dev \
+    libsasl2-dev \
+    libsnmp-dev \
+    libsodium-dev \
+    libssl-dev \
+    libtidy-dev \
+    libvpx-dev \
+    libwebp-dev \
+    libxml2-dev \
+    libxpm-dev \
+    libxslt-dev \
+    libyaml-dev \
+    libzip-dev \
+    libzstd-dev \
+    snmp \
+    unixodbc-dev \
+    uuid-dev \
+    zlib1g-dev \
+    # Build tools
+    autoconf \
+    bison \
+    bisonc++ \
+    ca-certificates \
+    curl \
+    dpkg-dev \
+    file \
+    flex \
+    g++ \
+    gcc \
+    git \
+    lemon \
+    libc-client-dev \
+    libc-dev \
+    libcurl4-openssl-dev \
+    libssl-dev \
+    make \
+    patch \
+    pkg-config \
+    re2c \
+    xz-utils \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN apt-get update && apt-get install libonig-dev postgresql ffmpeg unzip -y 
 
 # supervisord
