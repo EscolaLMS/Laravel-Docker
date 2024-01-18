@@ -1,4 +1,4 @@
-FROM devilbox/php-fpm:8.2-prod
+FROM devilbox/php-fpm:8.2-base
 
 RUN apt-get update && apt-get install libonig-dev postgresql ffmpeg unzip -y 
 
