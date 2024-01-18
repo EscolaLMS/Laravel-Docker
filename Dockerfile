@@ -196,6 +196,12 @@ RUN set -eux \
     && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) zip \
     && true
 
+# -------------------- Installing PHP Extension: pcntl --------------------
+RUN set -eux \
+    # Installation: Generic
+    # Type:         Built-in extension
+    && docker-php-ext-install -j$(getconf _NPROCESSORS_ONLN) pcntl \
+    && true
 
 # composer
 RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.phar \
