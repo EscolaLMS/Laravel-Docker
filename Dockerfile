@@ -1,4 +1,4 @@
-FROM devilbox/php-fpm:8.2-prod
+FROM devilbox/php-fpm:8.3-prod
 
 RUN apt-get update && apt-get install libonig-dev postgresql ffmpeg unzip -y 
 
@@ -7,7 +7,7 @@ RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.
     && mv composer.phar /usr/bin/composer
 RUN chmod +x /usr/bin/composer
 
-RUN curl -sL https://deb.nodesource.com/setup_14.x | bash -
+RUN curl -sL https://deb.nodesource.com/setup_20.x | bash -
 RUN apt-get update -qq && apt-get install -y build-essential nodejs 
 
 # image optimizers
