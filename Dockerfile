@@ -17,5 +17,8 @@ RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
 # mjml binary 
 RUN npm install -g mjml
 
+# remove xdebug 
+RUN rm /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini && pecl uninstall xdebug
+
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
