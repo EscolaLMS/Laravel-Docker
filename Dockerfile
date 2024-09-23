@@ -8,8 +8,7 @@ RUN curl --silent --show-error https://getcomposer.org/composer.phar > composer.
 RUN chmod +x /usr/bin/composer
 
 # image optimizers
-RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y \
-    && npm install -g svgo@1.3.2
+RUN apt-get install jpegoptim optipng pngquant gifsicle webp -y 
 
 RUN apt-get clean && apt-get -y autoremove
 
