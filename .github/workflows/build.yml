@@ -31,4 +31,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: escolalms/php:${{env.BRANCH}},escolalms/php:8
+          tags: escolalms/php:${{env.BRANCH}},escolalms/php:8.2
