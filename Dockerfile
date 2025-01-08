@@ -9,12 +9,12 @@ RUN apk add --no-cache \
     ffmpeg \
     unzip \
     libzip-dev libpng-dev  libxml2-dev openssl-dev\
-    freetype-dev libpng-dev jpeg-dev libjpeg-turbo-dev \
+    freetype-dev libpng-dev jpeg-dev libjpeg-turbo-dev libavif-dev libpng-dev libxpm-dev libvpx-dev libwebp-dev \
     supervisor \ 
     bash \
     jpegoptim optipng pngquant gifsicle libwebp \
     nodejs npm 
-RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+RUN docker-php-ext-configure gd --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --with-avif \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install zip pcntl bcmath gd session pcntl pdo pdo_pgsql pdo_mysql intl
