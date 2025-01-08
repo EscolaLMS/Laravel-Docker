@@ -9,15 +9,18 @@ RUN apk add --no-cache \
     ffmpeg \
     unzip \
     libzip-dev libpng-dev  libxml2-dev openssl-dev\
+    freetype-dev libpng-dev jpeg-dev libjpeg-turbo-dev \
     supervisor \ 
     bash \
     jpegoptim optipng pngquant gifsicle libwebp \
     nodejs npm 
+RUN docker-php-ext-configure gd --with-freetype --with-jpeg \
+    && docker-php-ext-configure intl \
+    && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 RUN docker-php-ext-install zip pcntl bcmath gd session pcntl pdo pdo_pgsql pdo_mysql
 RUN pecl install excimer
-RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
 
-CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
+CMD ["/usr/bin/supervisord"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
