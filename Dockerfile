@@ -19,7 +19,5 @@ RUN docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
 
-COPY supervisord.conf /etc/supervisor/supervisord.conf 
-
 CMD ["/usr/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
 ENTRYPOINT ["/docker-entrypoint.sh"]
