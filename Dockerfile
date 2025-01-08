@@ -1,5 +1,5 @@
 FROM php:8.3-fpm-alpine
-#WORKDIR /var/www/html
+WORKDIR /var/www/html
 EXPOSE 9000
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
