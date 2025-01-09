@@ -3,6 +3,7 @@ WORKDIR /var/www/html
 EXPOSE 9000
 
 COPY docker-entrypoint.sh /docker-entrypoint.sh
+COPY php-fpm.conf /usr/local/etc/php-fpm.conf
 RUN apk add --no-cache \
     $PHPIZE_DEPS \  
     postgresql-dev \
