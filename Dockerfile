@@ -18,8 +18,9 @@ RUN apt-get update && apt-get install -y --no-install-recommends --no-install-su
 RUN docker-php-ext-configure gd --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --with-avif \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
-RUN docker-php-ext-install zip pcntl bcmath gd session pcntl pdo pdo_pgsql pdo_mysql intl
-
+RUN docker-php-ext-install zip pcntl bcmath gd session pcntl pdo pdo_pgsql pdo_mysql intl opcache
+RUN pecl install apcu
+RUN docker-php-ext-enable apcu
 #RUN pecl install excimer
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && php composer-setup.php && php -r "unlink('composer-setup.php');" && mv composer.phar /usr/local/bin/composer
