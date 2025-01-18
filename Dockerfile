@@ -13,8 +13,7 @@ RUN apk add --no-cache \
     freetype-dev libpng-dev jpeg-dev libjpeg-turbo-dev libavif-dev libpng-dev libxpm-dev libvpx-dev libwebp-dev \
     supervisor \ 
     bash \
-    jpegoptim optipng pngquant gifsicle libwebp \
-    nodejs npm 
+    jpegoptim optipng pngquant gifsicle libwebp 
 RUN docker-php-ext-configure gd --enable-gd --with-webp --with-jpeg --with-xpm --with-freetype --with-avif \
     && docker-php-ext-configure intl \
     && docker-php-ext-configure pgsql -with-pgsql=/usr/local/pgsql
