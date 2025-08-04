@@ -42,6 +42,7 @@ RUN docker-php-ext-configure gd \
     && docker-php-ext-install \
         zip \
         bcmath \
+        pcntl \
         gd \
         session \
         pdo \
